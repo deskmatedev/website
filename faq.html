@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <script src="./static/js/vue.js"></script>
+  <script src="./static/js/element.js"></script>
+  <script src="./static/js/jquery-3.6.0.js"></script>
+  <link rel="stylesheet" href="./static/css/element.css">
+  <link rel="stylesheet" href="./static/css/common.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <meta name="keywords" content="deskmate,virtual assistant,AI assistant,AI助手,虚拟助手,桌妹">
+  <meta name="description" content="DeskMate是一款个人桌面智能助手软件。桌妹搭载多种大语言模型，并支持多种显示模式。">
+  <link rel="icon" href="static/images/favicon.jpg">
+  <title>DeskMate | 常见问题</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-19TRV7W2KE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-19TRV7W2KE');
+  </script>
+</head>
+
+<body>
+  <div id="app" class="body_wrapper">
+    <div class="hearder_wrapper">
+      <div class="hearder_logo">
+        <img src="./static/images/logo.png" alt="">
+      </div>
+      <div class="hearder_nav">
+        <a href="./index.html" class="nav_a">首页</a>
+        <a href="https://doc.deskmate.dev/zh-cn/" class="nav_a" target="_blank">使用指南</a>
+        <a href="#" class="nav_a">会员</a>
+        <a href="./faq.html" class="nav_a active">常见问题</a>
+        <a href="#" class="nav_a">客户支持</a>
+      </div>
+    </div>
+    <div class="cont_wrapper">
+      <img src="./static/images/mainBk.png" class="cont_mainBk" alt="">
+      <div class="banner_wrap" :class="scrollTop>800?'active':''">
+        <img src="./static/images/banner.png" class="banner_img" alt="">
+      </div>
+      <div class="banner_tit_wrap">
+        <img class="banner_tit_dx" :class="showDx2?'active':''" src="./static/images/banner_tit_dx.png" alt="">
+        <img src="./static/images/banner_tit.png" class="banner_tit" alt="">
+      </div>
+      <div class="question_wrap">
+        <div class="question_tit">常见问题解答</div>
+        <div class="question_list">
+          <div class="question_com">
+            <p class="question_com_p1">什么是桌妹？</p>
+            <p class="question_com_p2">桌妹（DeskMate）是一款个人桌面智能助手软件。桌妹搭载多种大语言模型，并支持多种显示模式。</p>
+          </div>
+          <div class="question_com">
+            <p class="question_com_p1">桌妹可以做什么？</p>
+            <p class="question_com_p2">
+              可爱的桌妹可以帮你解决很多问题！作业题、简答题、科学或者历史的知识都不在话下，甚至工作中文章的撰写与知识的梳理也可以交给桌妹来完成。或者你也可以和可爱的桌妹们聊天，养成你专属的桌面助手！</p>
+          </div>
+          <div class="question_com">
+            <p class="question_com_p1">我有哪些桌妹可以选？</p>
+            <p class="question_com_p2">桌妹（DeskMate）是一款个人桌面智能助手软件。桌妹搭载多种大语言模型，并支持多种显示模式。</p>
+          </div>
+          <div class="question_com">
+            <p class="question_com_p1">什么是桌妹？</p>
+            <p class="question_com_p2">桌妹的看板娘是B站VUP
+              梦珑拌饭！桌妹收录了梦珑小姐的歌曲舞蹈，并还原了梦珑小姐的声音，希望粉丝和用户们喜欢。我们会持续推进策划新的桌妹加入，未来将有更多的虚拟偶像、真人UP、声优老师成为我们的桌妹哦！把你们期待加入的桌妹写在评论区吧！
+            </p>
+          </div>
+          <div class="question_com">
+            <p class="question_com_p1">「桌妹」与其他产品有何不同？</p>
+            <p class="question_com_p2">
+              我们和其他同类产品最大的不同是支持用户直接体验现在最火热的大语言模型，不需要任何其他方法或者工具、授权等。我们希望通过我们小小的努力，做出一个大家喜欢的二次元智能桌面助手。</p>
+          </div>
+          <div class="question_com">
+            <p class="question_com_p1">我要从哪里获得桌妹？</p>
+            <p class="question_com_p2">目前桌妹支持Steam下载，点击首页顶部的链接进入Steam商店页面，购买下载桌妹。</p>
+          </div>
+          <div class="question_com">
+            <p class="question_com_p1">桌妹收费吗？</p>
+            <p class="question_com_p2">
+              桌妹是收费产品，我们希望可以通过适当的收费对产品进行持续的更新与运维，我们还有许多非常有意思的功能希望可以添加进桌妹，每个阶段的正向反馈都会让我们更加坚定的把桌妹继续运营下去。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          scrollTop: '',
+          showDx2: false
+        }
+      },
+      components: {
+      },
+      methods: {
+        // 获取页面滚动距离
+        handleScroll() {
+          this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          if (this.scrollTop > 400) {
+            this.showDx2 = true
+          }
+        }
+      },
+      mounted: function () {
+        window.addEventListener('scroll', this.handleScroll) // 监听页面滚动
+      }
+    })  
+  </script>
+</body>
+
+</html>
