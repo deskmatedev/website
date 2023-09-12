@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./static/css/element.css">
   <link rel="stylesheet" href="./static/css/common.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">-->
   <meta name="keywords" content="deskmate,virtual assistant,AI assistant,AI助手,虚拟助手,桌妹">
   <meta name="description" content="DeskMate是一款个人桌面智能助手软件。桌妹搭载多种大语言模型，并支持多种显示模式。">
   <link rel="icon" href="static/images/favicon.jpg">
@@ -32,11 +32,11 @@
 
 <body>
   <div id="app" class="body_wrapper">
-    <div class="hearder_wrapper">
-      <div class="hearder_logo">
+    <div class="header_wrapper">
+      <div class="header_logo">
         <img src="./static/images/logo.png" alt="">
       </div>
-      <div class="hearder_nav">
+      <div class="header_nav">
         <a href="./index.html" class="nav_a active">首页</a>
         <a href="https://doc.deskmate.dev/zh-cn/" class="nav_a" target="_blank">使用指南</a>
         <a href="#" class="nav_a">会员</a>
@@ -45,7 +45,11 @@
       </div>
     </div>
     <div class="cont_wrapper">
-      <img src="./static/images/mainBk.png" class="cont_mainBk" alt="">
+      <picture>
+        <source srcset="./static/images/mainBK.webp" type="image/webp">
+        <img src="./static/images/mainBk.jpg" class="cont_mainBk" alt="">
+      </picture>
+
       <div class="rightFloat">
         <img src="./static/images/rightFloat.png" class="rightFloat_img" alt="">
         <div class="rightFloat_p1">已上线</div>
@@ -70,7 +74,7 @@
         <div class="video_box">
           <iframe src="https://player.bilibili.com/player.html?aid=448023226&bvid=BV1rj411y717&cid=1256767988&p=1&autoplay=1"
             scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="1440"
-            height="708"></iframe>
+            height="708" id="video_iframe"></iframe>
         </div>
       </div>
       <div class="fun_wrap">
@@ -103,14 +107,14 @@
         <div class="fun_tit software_tit">
           <img src="./static/images/softwareTit.png" alt="">
         </div>
-        <div class="software_swiper">
+        <div class="software_swiper" id="software_swiper">
           <div class="prev">
             <img class="com_change" src="./static/images/right.png" @click="arrowClick('prev')" />
           </div>
           <div class="next">
             <img class="com_change" src="./static/images/right.png" @click="arrowClick('next')" />
           </div>
-          <el-carousel ref="cardShow" arrow="never" :interval="5000" arrow="always" height="720px"
+          <el-carousel ref="cardShow" id="cardShow" arrow="never" :interval="5000" arrow="always" :height="carouselHeight"
             indicator-position="none">
             <el-carousel-item>
               <img src="./static/images/swiper1.png" alt="">
@@ -138,7 +142,8 @@
       data() {
         return {
           scrollTop: '',
-          showDx2: false
+          showDx2: false,
+          carouselHeight: "720px"
         }
       },
       components: {
@@ -158,10 +163,39 @@
           if (this.scrollTop > 400) {
             this.showDx2 = true
           }
+        },
+        calculateEmbeddedVideoSize() {
+          if (window.innerWidth < window.innerHeight) {
+            let embeddingVideo = document.getElementById('video_iframe')
+            let embeddingVideoWidth = window.innerWidth * 0.75
+            let embeddingVideoHeight = embeddingVideoWidth * 9 / 16
+            embeddingVideo.width = Math.round(embeddingVideoWidth).toString()
+            embeddingVideo.height = Math.round(embeddingVideoHeight).toString()
+            console.log('Embedding Video Width: ', embeddingVideoWidth, ' Height:', embeddingVideoHeight)
+          }
+        },
+        calculateSoftwareSwiper() {
+          if (window.innerWidth < window.innerHeight) {
+            let swiper = document.getElementById('software_swiper')
+            let swiperWidth = window.innerWidth * 0.60
+            let swiperHeight = swiperWidth * 9 / 16
+            swiper.style.width = swiperWidth.toString() + "px"
+            swiper.style.height = swiperHeight.toString() + "px"
+
+            let carousel = document.getElementById('cardShow')
+            let carouselWidth = carousel.offsetWidth
+            let carouselHeight = carouselWidth * 9 / 16
+            this.carouselHeight = carouselHeight.toString() + "px"
+            console.log("carousel width:", carouselWidth, " height:", this.carouselHeight)
+          }
         }
       },
       mounted: function () {
+        console.log(window.innerWidth, window.outerWidth)
         window.addEventListener('scroll', this.handleScroll) // 监听页面滚动
+
+        // this.calculateEmbeddedVideoSize()
+        // this.calculateSoftwareSwiper()
       }
     })  
   </script>

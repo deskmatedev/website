@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./static/css/element.css">
   <link rel="stylesheet" href="./static/css/common.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">-->
   <meta name="keywords" content="deskmate,virtual assistant,AI assistant,AI助手,虚拟助手,桌妹">
   <meta name="description" content="DeskMate是一款个人桌面智能助手软件。桌妹搭载多种大语言模型，并支持多种显示模式。">
   <link rel="icon" href="static/images/favicon.jpg">
@@ -28,11 +28,11 @@
 
 <body>
   <div id="app" class="body_wrapper">
-    <div class="hearder_wrapper">
-      <div class="hearder_logo">
+    <div class="header_wrapper">
+      <div class="header_logo">
         <img src="./static/images/logo.png" alt="">
       </div>
-      <div class="hearder_nav">
+      <div class="header_nav">
         <a href="./index.html" class="nav_a">首页</a>
         <a href="https://doc.deskmate.dev/zh-cn/" class="nav_a" target="_blank">使用指南</a>
         <a href="#" class="nav_a">会员</a>
@@ -41,7 +41,11 @@
       </div>
     </div>
     <div class="cont_wrapper">
-      <img src="./static/images/mainBk.png" class="cont_mainBk" alt="">
+      <picture>
+        <source srcset="./static/images/mainBK.webp" type="image/webp">
+        <img src="./static/images/mainBk.jpg" class="cont_mainBk" alt="">
+      </picture>
+
       <div class="banner_wrap" :class="scrollTop>800?'active':''">
         <img src="./static/images/banner.png" class="banner_img" alt="">
       </div>
