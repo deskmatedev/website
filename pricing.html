@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="./static/js/vue.js"></script>
+    <script src="./static/js/element.js"></script>
+    <script src="./static/js/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="./static/css/element.css">
+    <link rel="stylesheet" href="./static/css/common.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+<!--      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">-->
+    <meta name="keywords" content="deskmate,virtual assistant,AI assistant,AI助手,虚拟助手,桌妹">
+    <meta name="description" content="DeskMate是一款个人桌面智能助手软件。桌妹搭载多种大语言模型，并支持多种显示模式。">
+    <link rel="icon" href="static/images/favicon.jpg">
+    <title>DeskMate | 会员</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-19TRV7W2KE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-19TRV7W2KE');
+    </script>
+    <style>
+        .pricing_banner_tit_wrap {
+            width: 1322px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 111;
+            margin: 80px auto 0;
+        }
+
+        .pricing_banner_tit {
+            width: 40%;
+        }
+
+        .pricing_banner_slogan {
+            margin-top: 10px;
+            width: 270px;
+            height: 28px;
+            font-size: 19px;
+            font-family: 'PingFangSC-Regular', sans-serif;
+            font-weight: 400;
+            color: #FFFFFF;
+            line-height: 28px;
+            letter-spacing: 10px;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.85);
+        }
+
+        .pricing_info_wrap {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-top: 23px
+        }
+
+        .pricing_switch_wrap {
+            /*width: 600px;*/
+            margin: auto;
+            display: flex;
+        }
+
+        .pricing_switch_tooltip {
+            width: 355px;
+            margin-top: -70px;
+            margin-right: -60px;
+        }
+
+        .pricing_switch_tooltip_wrap {
+            margin-left: 190px;
+        }
+
+        .pricing_switch_tooltip_box {
+            width: 76px;
+            height: 25px;
+            background-color: #CAC9CB;
+            position: relative;
+            border-radius: 3px;
+            margin: 50px;  /* 这只是为了确保有足够的空间显示指示三角形。你可能想要根据你的布局调整它。 */
+            opacity: 0.77;
+            transform: rotate(-45deg);  /* 逆时针旋转45度 */
+
+            /* 文本样式 */
+            font-family: 'PingFangSC-Regular', sans-serif;
+            color: #545454;
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            /* 添加伪元素来创建底部的三角形指示器 */
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;  /* 三角形的高度 */
+                left: 50%;
+                transform: translateX(-50%);  /* 为了将三角形与气泡框对齐 */
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;  /* 三角形的一半宽度 */
+                border-right: 10px solid transparent;  /* 三角形的一半宽度 */
+                border-top: 10px solid #CAC9CB;  /* 三角形的高度 */
+            }
+        }
+
+        .pricing_switch_controller {
+            width: 355px;
+            height: 46px;
+        }
+
+        .switch-wrapper {
+            width: 355px;
+            height: 46px;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+        .switch-input {
+            display: none;
+        }
+
+        .switch-label {
+            display: block;
+            border: 1px solid #FFFFFF;
+            border-radius: 31px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background-color: #FFFFFF;
+        }
+
+        .switch-button {
+            width: 50%;
+            height: 46px;
+            background: #5146FF;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .switch-input:checked + .switch-label .switch-button {
+            left: 50%;
+        }
+
+        .switch-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            height: 46px;
+        }
+
+        .left-text, .right-text {
+            transition: 0.3s;
+            margin: auto;
+            z-index: 10;
+            font-size: 12px;
+        }
+
+        .right-text {
+            margin-left: 40px;
+        }
+
+        .membership_version_title {
+            font-size: 16px;
+        }
+
+        .switch-input:checked + .switch-label .left-text {
+            opacity: 1;
+        }
+
+        .switch-input:checked + .switch-label .right-text {
+            opacity: 1;
+        }
+
+        .inactive {
+            opacity: 0.5;
+        }
+
+        .active {
+            opacity: 1;
+        }
+
+        .pricing_switch_question {
+            width: 355px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+        }
+
+        .questionmark {
+            width: 28px;
+            height: 28px;
+            z-index: 10;
+            margin-left: 22px;
+            cursor: pointer;
+        }
+
+        .pricing_table_wrap {
+            width: 980px;
+            height: 606px;
+            margin-top: 65px;
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: space-around;
+        }
+
+        .pricing_table_item {
+            width: 300px;
+            height: 593px;
+            background: #1A1926;
+            z-index: 9;
+            font-size: 12px;
+            font-family: 'PingFangSC-Semibold', sans-serif;
+            color: #FFFFFF;
+            margin: 0 20px 0 20px;
+            padding: 30px 27px 35px 27px;
+        }
+
+        .membership_type {
+            font-size: 20px;
+            font-weight: 530;
+            line-height: 28px;
+        }
+
+        .membership_crown {
+            position: absolute;
+            z-index: -2;
+            margin-top: -10px;
+            margin-left: -20px;
+        }
+
+        .membership_pricing_info_wrap {
+            margin-top: 44px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 21px;
+            border-bottom: 1px dashed #FFFFFF;
+        }
+
+        .membership_pricing_value {
+            font-size: 35px;
+            font-weight: bold;
+            color: #FFFFFF;
+            line-height: 42px;
+        }
+
+        .membership_pricing_value_unit {
+            font-size: 18px;
+            line-height: 42px;
+
+        }
+
+        .membership_user_support_level {
+            font-size: 14px;
+            font-weight: 400;
+            color: #FFFFFF;
+            line-height: 20px;
+        }
+
+        .membership_ability {
+            margin-top: 35px;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .membership_ability_item {
+            display: flex;
+            align-items: center;
+            margin: 13px auto 13px 0;
+        }
+
+        .membership_ability_item .checkmark {
+            background: url(./static/images/pricing/checkmark.png) no-repeat;
+            background-size: cover;
+            width: 21px;
+            height: 21px;
+        }
+
+        .checkmark-hidden {
+            visibility: hidden;
+        }
+
+        .membership_ability_item p {
+            margin-left: 27px;
+            font-size: 12px;
+            font-weight: 400;
+            color: #FFFFFF;
+            line-height: 17px;
+        }
+
+        .membership_sub {
+            margin-top: 40px;
+            height: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .membership_sub_wrap {
+            margin-top: 10px;
+            height: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .membership_sub_text {
+            font-size: 10px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.50);
+            line-height: 14px;
+            letter-spacing: 10px;
+            /*margin-left: auto;*/
+            /*margin-right: auto;*/
+            text-align: center;
+        }
+
+        .membership_sub_button_wrap {
+            width: 171px;
+            height: 35px;
+            background: #23213A;
+            border-radius: 13px;
+            display: flex;
+            justify-content: center; /* horizontally center */
+            align-items: center; /* vertically center */
+            margin-left: auto;
+            margin-right: auto;
+            cursor: pointer;
+            color: white; /* typical link color */
+        }
+
+        .pricing_table_item_active {
+            background: #FFFFFF;
+            border: 5px solid;
+            border-top: 20px solid;
+            border-image: linear-gradient(180deg, rgba(137, 124, 255, 1), rgba(81, 70, 255, 1)) 5 5;
+            color: #0B00BE;
+            margin-top: -20px;
+        }
+
+        .pricing_table_item_active p {
+            color: #0B00BE;
+        }
+
+        .pricing_table_item_active span {
+            color: #0B00BE;
+        }
+
+        .pricing_table_item_active .membership_pricing_info_wrap {
+            border-bottom: 1px dashed #0B00BE;
+        }
+
+        .pricing_table_item_active .membership_sub_button_wrap {
+            background: #5146FF;
+
+        }
+
+        .pricing_table_item_active .membership_sub_button_wrap .membership_sub_button {
+            color: white;
+        }
+
+        .pricing_table_item_active .membership_ability_item .checkmark {
+            background: url(./static/images/pricing/checkmark_checked.png) no-repeat;
+            background-size: cover;
+            width: 21px;
+            height: 21px;
+        }
+
+        .pricing_highlight_wrap {
+            width: 100%;
+            height: 667px;
+            margin-top: 60px;
+        }
+
+        .pricing_highlight_frame {
+            position: absolute;
+            width: 60%;
+            height: 726px;
+            left: 17%;
+            z-index: 0;
+        }
+
+        .pricing_highlight_tit_dx {
+            position: absolute;
+            left: 60%;
+            top: 1205px;
+            z-index: 11;
+        }
+
+        .highlight_wrap {
+            position: relative;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 216px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            margin-top: 18px;
+            margin-bottom: 18px;
+            /*margin: 22px auto 22px auto;*/
+        }
+
+        .highlight-no-wrap {
+            width: 52px;
+            text-align: center;
+        }
+
+        .highlight-item .highlight-no {
+            font-size: 70px;
+            font-family: 'YouSheBiaoTiHei', sans-serif;
+            color: #DBD8FF;
+            line-height: 91px;
+            opacity: 11%;
+        }
+
+        .highlight-item .highlight-text {
+            margin-left: 38px;
+            font-size: 34px;
+            font-family: 'YouSheBiaoTiHei', sans-serif;
+            color: #C3BFFF;
+            line-height: 44px;
+        }
+
+        .pricing_tips_wrap {
+            position: relative;
+            width: 60%;
+            height: 628px;
+            margin-top: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 98;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pricing_tips_wrap .pricing_tips_title {
+            font-size: 44px;
+            font-family: 'YouSheBiaoTiHei', sans-serif;
+            color: #FFFFFF;
+            line-height: 28px;
+            letter-spacing: 16px;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.85);
+            text-align: center;
+        }
+
+        .pricing_tips_wrap .pricing_tips_content_wrap {
+            margin-top: 35px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing_tips_wrap .pricing_tips_content_wrap .pricing_tips_item {
+            margin-top: 6px;
+            margin-bottom: 13px;
+            padding-bottom: 15px;
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.3);
+
+        }
+
+        .pricing_tips_wrap .pricing_tips_content_wrap .pricing_tips_item p {
+            font-size: 18px;
+            font-family: 'PingFangSC-Semibold', sans-serif;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 25px;
+        }
+
+        .unselectable {
+            -webkit-user-select: none;  /* Chrome, Safari, Opera */
+            -moz-user-select: none;     /* Firefox */
+            -ms-user-select: none;      /* Internet Explorer/Edge */
+            user-select: none;          /* Non-prefixed version, currently supported by any browser but subject to future changes */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="app" class="body_wrapper">
+        <div class="header_wrapper">
+            <div class="header_logo">
+                <img src="./static/images/logo.png" alt="">
+            </div>
+            <div class="header_nav">
+                <a href="./index.html" class="nav_a">首页</a>
+                <a href="https://doc.deskmate.dev/zh-cn/" class="nav_a" target="_blank">使用指南</a>
+                <a href="#" class="nav_a active">会员</a>
+                <a href="./faq.html" class="nav_a">常见问题</a>
+                <a href="#" class="nav_a">客户支持</a>
+            </div>
+        </div>
+        <div class="cont_wrapper">
+            <picture>
+                <source srcset="./static/images/pricing/mainBK.webp" type="image/webp">
+                <img src="./static/images/pricing/mainBk.jpg" class="cont_mainBk" alt="">
+            </picture>
+            <div class="pricing_banner_tit_wrap">
+                <img class="pricing_banner_tit" src="./static/images/pricing/banner_tit.png" alt="">
+                <p class="pricing_banner_slogan">为你提供优质AI服务</p>
+            </div>
+            <div class="pricing_info_wrap">
+                <div class="pricing_switch_wrap">
+                    <div class="pricing_switch_tooltip">
+                        <div class="pricing_switch_tooltip_wrap">
+                            <div class="pricing_switch_tooltip_box unselectable">可随时取消！</div>
+                        </div>
+                    </div>
+                    <div class="pricing_switch_controller">
+                        <div class="switch-wrapper">
+                            <input type="checkbox" v-model="isAdvancedMember" class="switch-input" id="switch-input">
+                            <label class="switch-label" for="switch-input">
+                                <span class="switch-button"></span>
+                                <span class="switch-text">
+                                    <span class="left-text" :style="{color: isAdvancedMember ? '#000000' : '#FFFFFF'}"><span class="membership_version_title">基础版</span>&nbsp;/&nbsp;会员用户</span>
+                                    <span class="right-text" :style="{color: isAdvancedMember ? '#FFFFFF': '#000000'}"><span class="membership_version_title">高级版</span>&nbsp;/&nbsp;会员用户</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="pricing_switch_question">
+                        <img src="./static/images/pricing/questionmark.png" class="questionmark" alt="">
+                    </div>
+                </div>
+                <div class="pricing_table_wrap">
+                    <div class="pricing_table_item" id="pricing_table_free_user">
+                        <div class="membership_type">
+                            <span>免费用户</span>
+                        </div>
+                        <div class="membership_pricing_info_wrap">
+                            <span class="membership_pricing_value">¥ 0</span>
+                            <span class="membership_user_support_level">用户支持群</span>
+                        </div>
+                        <div class="membership_ability">
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">基础语言能力&nbsp;<sup>1</sup></p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">高级语言能力体验版&nbsp;<sup>3</sup></p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">聊天记录本地存储</p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">文字聊天</p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">文字&语音输入</p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark checkmark-hidden"></div>
+                                <p class="membership_ability_item_desc">-</p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark checkmark-hidden"></div>
+                                <p class="membership_ability_item_desc">-</p>
+                            </div>
+                        </div>
+                        <div class="membership_sub">
+                            <div class="membership_sub_wrap">
+                                <p class="membership_sub_text unselectable">免费使用</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricing_table_item" id="pricing_table_paid_user">
+                        <div class="membership_type">
+                            <span>会员用户</span>
+                        </div>
+                        <div class="membership_pricing_info_wrap">
+                            <span class="membership_pricing_value">¥ 25 <span class="membership_pricing_value_unit">/月</span></span>
+                            <span class="membership_user_support_level">会员支持群</span>
+                        </div>
+                        <div class="membership_ability">
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">基础语言能力&nbsp;<sup>1</sup></p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">高级语言能力体验版&nbsp;<sup>2</sup></p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">聊天记录永久存储</p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">基础语音能力&nbsp;<sup>4</sup></p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">文字&语音输入</p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark checkmark-hidden"></div>
+                                <p class="membership_ability_item_desc">-</p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark checkmark-hidden"></div>
+                                <p class="membership_ability_item_desc">-</p>
+                            </div>
+                        </div>
+                        <div class="membership_sub">
+                            <div class="membership_sub_wrap">
+                                <div class="membership_sub_button_wrap" @onclick="handleSub">
+                                    <p class="membership_sub_button unselectable">订阅</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricing_table_item pricing_table_item_active" id="pricing_table_premium_paid_user">
+                        <div class="membership_type">
+                            <span>高级会员用户</span>
+                            <img src="./static/images/pricing/crown.png" class="membership_crown" alt="">
+                        </div>
+                        <div class="membership_pricing_info_wrap">
+                            <span class="membership_pricing_value">¥ 35 <span class="membership_pricing_value_unit">/月</span></span>
+                            <span class="membership_user_support_level">高级会员群</span>
+                        </div>
+                        <div class="membership_ability">
+                            <div class="membership_ability_item">
+                                
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">基础语言能力&nbsp;<sup>1</sup></p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">高级语言能力体验版&nbsp;<sup>2</sup></p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">聊天记录永久存储</p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">高级语音能力&nbsp;<sup>5</sup></p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">文字&语音输入</p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">支持唱歌&跳舞&nbsp;<sup>6</sup></p>
+                            </div>
+                            <div class="membership_ability_item">
+                                <div class="checkmark"></div>
+                                <p class="membership_ability_item_desc">优先体验新功能&nbsp;<sup>7</sup></p>
+                            </div>
+                        </div>
+                        <div class="membership_sub">
+                            <div class="membership_sub_wrap">
+                                <div class="membership_sub_button_wrap" @onclick="handleSub">
+                                    <p class="membership_sub_button unselectable">订阅</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing_highlight_wrap">
+                <img src="./static/images/pricing/tit_dx.png" class="pricing_highlight_tit_dx" alt="">
+                <img src="./static/images/pricing/highlight-frame.png" class="pricing_highlight_frame" ref="pricing_highlight_frame" @load="getHighlightFrame" alt="">
+                <div class="highlight_wrap">
+                    <div class="highlight-item">
+                        <div class="highlight-no-wrap">
+                            <span class="highlight-no">1</span>
+                        </div>
+                        <span class="highlight-text">专业语言模型提供最精确的回答质量</span>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-no-wrap">
+                            <span class="highlight-no">2</span>
+                        </div>
+                        <span class="highlight-text">定制版声音克隆，宛若真人在线一般</span>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-no-wrap">
+                            <span class="highlight-no">3</span>
+                        </div>
+                        <span class="highlight-text">支持语音输入输出，更加快捷方便</span>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-no-wrap">
+                            <span class="highlight-no">4</span>
+                        </div>
+                        <span class="highlight-text">唱歌跳舞，我家AI啥都会一点</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing_tips_wrap">
+                <span class="pricing_tips_title">相关问题解答</span>
+                <div class="pricing_tips_content_wrap">
+                    <div class="pricing_tips_item">
+                        <p><sup>1</sup>基础语言能力：本地部署能力，采用优化的语言模型方案，能够满足日常的交流与互动。</p>
+                    </div>
+                    <div class="pricing_tips_item">
+                        <p><sup>2</sup>高级语言能力：联网运行能力，支持更多种的交互形式，支持记忆功能，每周支持500条互动。</p>
+                    </div>
+                    <div class="pricing_tips_item">
+                        <p><sup>3</sup>高级语言能力（体验版）：联网运行能力，体验更多的交互形式，支持记忆功能，每周支持30条互动。</p>
+                    </div>
+                    <div class="pricing_tips_item">
+                        <p><sup>4</sup>基础语音能力：基本的语音能力，具有多种情感和优秀的发音品质，需要联网运行。</p>
+                    </div>
+                    <div class="pricing_tips_item">
+                        <p><sup>5</sup>高级语音能力：优化的语音能力，进一步提升了发音的品质和风格。</p>
+                    </div>
+                    <div class="pricing_tips_item">
+                        <p><sup>6</sup>唱歌&跳舞：可以命令桌妹为你唱歌或跳舞，歌曲库及舞蹈库快速扩容中。</p>
+                    </div>
+                    <div class="pricing_tips_item">
+                        <p><sup>7</sup>新功能体验：能够抢先一步体验DeskMate正在内测的新功能。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        new Vue({
+          el: '#app',
+          data(){
+            return {
+              scrollTop: '',
+              showDx2: false,
+              isAdvancedMember: true,
+              pricingHighlightFrameHeight: 0
+            }
+          },
+          components: {},
+          watch: {
+            isAdvancedMember: function(newValue) {
+              if (newValue) {
+                console.log("to 高级会员用户");
+                let paidUserBox = document.getElementById("pricing_table_paid_user")
+                let premiumPaidUserBox = document.getElementById("pricing_table_premium_paid_user")
+                paidUserBox.classList.remove("pricing_table_item_active")
+                premiumPaidUserBox.classList.add("pricing_table_item_active")
+              } else {
+                console.log("to 会员用户");
+                let paidUserBox = document.getElementById("pricing_table_paid_user")
+                let premiumPaidUserBox = document.getElementById("pricing_table_premium_paid_user")
+                premiumPaidUserBox.classList.remove("pricing_table_item_active")
+                paidUserBox.classList.add("pricing_table_item_active")
+              }
+            }
+          },
+          methods: {
+            // 获取页面滚动距离
+            handleScroll() {
+              this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+              if (this.scrollTop > 400) {
+                this.showDx2 = true
+              }
+            },
+            getHighlightFrame() {
+              this.pricingHighlightFrameHeight = this.$refs.pricing_highlight_frame.naturalHeight
+              console.log("Pricing Highlight Frame Height: ", this.pricingHighlightFrameHeight)
+            },
+            handleSub(e) {
+              console.log(e)
+            },
+          },
+          mounted: function () {
+            window.addEventListener('scroll', this.handleScroll) // 监听页面滚动
+          },
+          created: function () {
+
+          }
+        })
+    </script>
+</body>
+</html>
