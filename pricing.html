@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="./static/css/index.css">
 <!--      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">-->
     <meta name="keywords" content="deskmate,virtual assistant,AI assistant,AI助手,虚拟助手,桌妹">
-    <meta name="description" content="DeskMate是一款个人桌面智能助手软件。桌妹搭载多种大语言模型，并支持多种显示模式。">
+    <meta name="description" content="Deskmate是一款个人桌面智能助手软件。桌妹搭载多种大语言模型，并支持多种显示模式。">
     <link rel="icon" href="static/images/favicon.jpg">
-    <title>DeskMate | 会员</title>
+    <title>Deskmate | 会员</title>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-19TRV7W2KE"></script>
@@ -737,7 +737,7 @@
                         <p><sup>6</sup>唱歌&跳舞：可以命令桌妹为你唱歌或跳舞，歌曲库及舞蹈库快速扩容中。</p>
                     </div>
                     <div class="pricing_tips_item">
-                        <p><sup>7</sup>新功能体验：能够抢先一步体验DeskMate正在内测的新功能。</p>
+                        <p><sup>7</sup>新功能体验：能够抢先一步体验Deskmate正在内测的新功能。</p>
                     </div>
                 </div>
             </div>
@@ -758,13 +758,13 @@
           watch: {
             isAdvancedMember: function(newValue) {
               if (newValue) {
-                console.log("to 高级会员用户");
+                console.log("switch to 高级会员用户");
                 let paidUserBox = document.getElementById("pricing_table_paid_user")
                 let premiumPaidUserBox = document.getElementById("pricing_table_premium_paid_user")
                 paidUserBox.classList.remove("pricing_table_item_active")
                 premiumPaidUserBox.classList.add("pricing_table_item_active")
               } else {
-                console.log("to 会员用户");
+                console.log("switch to 会员用户");
                 let paidUserBox = document.getElementById("pricing_table_paid_user")
                 let premiumPaidUserBox = document.getElementById("pricing_table_premium_paid_user")
                 premiumPaidUserBox.classList.remove("pricing_table_item_active")
