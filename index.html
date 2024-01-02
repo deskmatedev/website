@@ -1,204 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <script src="./static/js/vue.js"></script>
-  <script src="./static/js/element.js"></script>
-  <script src="./static/js/jquery-3.6.0.js"></script>
-  <link rel="stylesheet" href="./static/css/element.css">
-  <link rel="stylesheet" href="./static/css/common.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">-->
-  <meta name="keywords" content="Deskmate,virtual assistant,AI assistant,AI助手,虚拟助手,桌妹">
-  <meta name="description" content="Deskmate是一款个人桌面智能助手软件。桌妹搭载多种大语言模型，并支持多种显示模式。">
-  <link rel="icon" href="static/images/favicon.jpg">
-  <title>Deskmate | Your AI Assistant</title>
-  <style>
-    .el-carousel__item {
-      border-radius: 16px;
-    }
-  </style>
-  !-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5L3PC4CM8X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-5L3PC4CM8X');
-  </script>
-</head>
-
-<body>
-  <div id="app" class="body_wrapper">
-    <div class="header_wrapper">
-      <div class="header_logo">
-        <img src="./static/images/logo.png" alt="">
-      </div>
-      <div class="header_nav">
-        <a href="./index.html" class="nav_a active">首页</a>
-        <a href="https://doc.deskmate.dev/#/zh-cn/" class="nav_a" target="_blank">使用指南</a>
-        <a href="./pricing.html" class="nav_a">会员</a>
-        <a href="./faq.html" class="nav_a">常见问题</a>
-        <a href="#" class="nav_a">客户支持</a>
-      </div>
-    </div>
-    <div class="cont_wrapper">
-      <picture>
-        <source srcset="./static/images/mainBK.webp" type="image/webp">
-        <img src="./static/images/mainBk.jpg" class="cont_mainBk" alt="">
-      </picture>
-
-      <div class="rightFloat">
-        <img src="./static/images/rightFloat.png" class="rightFloat_img" alt="">
-        <div class="rightFloat_p1">已上线</div>
-        <div class="rightFloat_to">
-          <a href="https://store.steampowered.com/app/2377010/" target="_blank">
-            <img src="./static/images/rightFloat_to.png" class="rightFloat_to_img" alt="">
-          </a>
-        </div>
-        <div class="rightFloat_p1 rightFloat_p2">免费获取!</div>
-      </div>
-      <div class="banner_wrap" :class="scrollTop>800?'active':''">
-        <img src="./static/images/banner.png" class="banner_img" alt="">
-      </div>
-      <div class="banner_tit_wrap">
-        <img class="banner_tit_dx" :class="showDx2?'active':''" src="./static/images/banner_tit_dx.png" alt="">
-        <img src="./static/images/banner_tit.png" class="banner_tit" alt="">
-      </div>
-      <div class="video_wrap">
-        <div class="video_tit">
-          <img src="./static/images/videoTit.png" class="video_tit_img" alt="">
-        </div>
-        <div class="video_box">
-          <iframe src="https://player.bilibili.com/player.html?aid=448023226&bvid=BV1rj411y717&cid=1256767988&p=1&autoplay=1"
-            scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="1440"
-            height="708" id="video_iframe"></iframe>
-        </div>
-      </div>
-      <div class="fun_wrap">
-        <div class="fun_tit">
-          <img src="./static/images/funTit.png" alt="">
-        </div>
-        <div class="fun_list">
-          <img class="list_dx" src="./static/images/list_dx.png" alt="">
-          <div class="list_com list_com1">
-            <p class="list_com_p1">接入最新的大语言模型，聪明</p>
-            <p class="list_com_p2">Deskmate引入了最新的大语言模型，确保桌妹始终能为您提供最聪明的AI对话服务。无需复杂的设置，一键切换先进的人工对话模型。</p>
-          </div>
-          <div class="list_com list_com2">
-            <p class="list_com_p1">赋予AI独一无二的性格，有趣</p>
-            <p class="list_com_p2">通过独特的AI调教方式，每一位桌妹都能够根据您的需求和偏好进行个性化定制。这意味着您将拥有一位独一无二、有趣至极的AI伙伴。</p>
-          </div>
-          <div class="list_com list_com3">
-            <p class="list_com_p1">角色才艺等待你开发，多艺</p>
-            <p class="list_com_p2">想要听歌、跳舞，或者享受更多才艺表演？桌妹随时为您呈现精彩的1对1表演。</p>
-          </div>
-          <div class="list_com list_com4">
-            <p class="list_com_p1">不同性格角色随时切换，快乐</p>
-            <p class="list_com_p2">在Deskmate的世界里，您将会发现每位AI伙伴都拥有独特的声音、技能和性格。无论您是在寻找陪伴、娱乐还是帮助，您都可以随时切换到最适合您的桌妹，享受快乐时光。相信你会找到一款你心仪的桌妹！</p>
-          </div>
-        </div>
-      </div>
-      <div class="software_wrap">
-        <div class="software_p1">部分功能需要付费成为会员才能使用，详情请参考 </div>
-        <div class="software_p2">Deskmate会员介绍</div>
-        <div class="fun_tit software_tit">
-          <img src="./static/images/softwareTit.png" alt="">
-        </div>
-        <div class="software_swiper" id="software_swiper">
-          <div class="prev">
-            <img class="com_change" src="./static/images/right.png" @click="arrowClick('prev')" />
-          </div>
-          <div class="next">
-            <img class="com_change" src="./static/images/right.png" @click="arrowClick('next')" />
-          </div>
-          <el-carousel ref="cardShow" id="cardShow" arrow="never" :interval="5000" arrow="always" :height="carouselHeight"
-            indicator-position="none">
-            <el-carousel-item>
-              <img src="./static/images/swiper1.png" alt="">
-            </el-carousel-item>
-            <el-carousel-item>
-              <img src="./static/images/swiper2.png" alt="">
-            </el-carousel-item>
-            <el-carousel-item>
-              <img src="./static/images/swiper3.png" alt="">
-            </el-carousel-item>
-            <el-carousel-item>
-              <img src="./static/images/swiper4.png" alt="">
-            </el-carousel-item>
-            <el-carousel-item>
-              <img src="./static/images/swiper5.png" alt="">
-            </el-carousel-item>
-          </el-carousel>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script>
-    new Vue({
-      el: '#app',
-      data() {
-        return {
-          scrollTop: '',
-          showDx2: false,
-          carouselHeight: "720px"
-        }
-      },
-      components: {
-      },
-      methods: {
-        arrowClick(val) {
-          if (val === 'next') {
-            this.$refs.cardShow.next()
-          } else {
-            this.$refs.cardShow.prev()
-          }
-        },
-        // 获取页面滚动距离
-        handleScroll() {
-          this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-          console.log(this.scrollTop);
-          if (this.scrollTop > 400) {
-            this.showDx2 = true
-          }
-        },
-        calculateEmbeddedVideoSize() {
-          if (window.innerWidth < window.innerHeight) {
-            let embeddingVideo = document.getElementById('video_iframe')
-            let embeddingVideoWidth = window.innerWidth * 0.75
-            let embeddingVideoHeight = embeddingVideoWidth * 9 / 16
-            embeddingVideo.width = Math.round(embeddingVideoWidth).toString()
-            embeddingVideo.height = Math.round(embeddingVideoHeight).toString()
-            console.log('Embedding Video Width: ', embeddingVideoWidth, ' Height:', embeddingVideoHeight)
-          }
-        },
-        calculateSoftwareSwiper() {
-          if (window.innerWidth < window.innerHeight) {
-            let swiper = document.getElementById('software_swiper')
-            let swiperWidth = window.innerWidth * 0.60
-            let swiperHeight = swiperWidth * 9 / 16
-            swiper.style.width = swiperWidth.toString() + "px"
-            swiper.style.height = swiperHeight.toString() + "px"
-
-            let carousel = document.getElementById('cardShow')
-            let carouselWidth = carousel.offsetWidth
-            let carouselHeight = carouselWidth * 9 / 16
-            this.carouselHeight = carouselHeight.toString() + "px"
-            console.log("carousel width:", carouselWidth, " height:", this.carouselHeight)
-          }
-        }
-      },
-      mounted: function () {
-        console.log(window.innerWidth, window.outerWidth)
-        window.addEventListener('scroll', this.handleScroll) // 监听页面滚动
-
-        // this.calculateEmbeddedVideoSize()
-        // this.calculateSoftwareSwiper()
+  <head>
+    <meta charset="utf-8" />
+    <script src="./static/js/vue.js"></script>
+    <script src="./static/js/element.js"></script>
+    <script src="./static/js/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="./static/css/element.css" />
+    <link rel="stylesheet" href="./static/css/common.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <!--  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">-->
+    <meta
+      name="keywords"
+      content="Deskmate,virtual assistant,AI assistant,AI助手,虚拟助手,桌妹"
+    />
+    <meta
+      name="description"
+      content="Deskmate是一款个人桌面智能助手软件。桌妹搭载多种大语言模型，并支持多种显示模式。"
+    />
+    <link rel="icon" href="static/images/favicon.jpg" />
+    <title>Deskmate | Your AI Assistant</title>
+    <style>
+      .el-carousel__item {
+        border-radius: 16px;
       }
-    })  
-  </script>
-</body>
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5L3PC4CM8X"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
+      gtag("config", "G-5L3PC4CM8X");
+    </script>
+  </head>
+
+  <body>
+    <div id="app" class="body_wrapper">
+      <div class="header_wrapper">
+        <div class="header_logo">
+          <img src="./static/images/logo.png" alt="" />
+        </div>
+        <div class="header_nav">
+          <a href="./index.html" class="nav_a active">首页</a>
+          <a
+            href="https://doc.deskmate.dev/#/zh-cn/"
+            class="nav_a"
+            target="_blank"
+            >使用指南</a
+          >
+          <a href="./pricing.html" class="nav_a">会员</a>
+          <a href="./faq.html" class="nav_a">常见问题</a>
+          <a href="#" class="nav_a">客户支持</a>
+        </div>
+      </div>
+      <div class="cont_wrapper">
+        <picture>
+          <source srcset="./static/images/mainBK.webp" type="image/webp" />
+          <img src="./static/images/mainBk.jpg" class="cont_mainBk" alt="" />
+        </picture>
+
+        <div class="rightFloat">
+          <img
+            src="./static/images/rightFloat.png"
+            class="rightFloat_img"
+            alt=""
+          />
+          <div class="rightFloat_p1">已上线</div>
+          <div class="rightFloat_to">
+            <a
+              href="https://store.steampowered.com/app/2377010/"
+              target="_blank"
+            >
+              <img
+                src="./static/images/rightFloat_to.png"
+                class="rightFloat_to_img"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="rightFloat_p1 rightFloat_p2">免费获取!</div>
+        </div>
+        <div class="banner_wrap" :class="scrollTop>800?'active':''">
+          <img src="./static/images/banner.png" class="banner_img" alt="" />
+        </div>
+        <div class="banner_tit_wrap">
+          <img
+            class="banner_tit_dx"
+            :class="showDx2?'active':''"
+            src="./static/images/banner_tit_dx.png"
+            alt=""
+          />
+          <img src="./static/images/banner_tit.png" class="banner_tit" alt="" />
+        </div>
+        <div class="video_wrap">
+          <div class="video_tit">
+            <img
+              src="./static/images/videoTit.png"
+              class="video_tit_img"
+              alt=""
+            />
+          </div>
+          <div class="video_box">
+            <iframe
+              src="https://player.bilibili.com/player.html?aid=448023226&bvid=BV1rj411y717&cid=1256767988&p=1&autoplay=1"
+              scrolling="no"
+              border="0"
+              frameborder="no"
+              framespacing="0"
+              allowfullscreen="true"
+              width="1440"
+              height="708"
+              id="video_iframe"
+            ></iframe>
+          </div>
+        </div>
+        <div class="fun_wrap">
+          <div class="fun_tit">
+            <img src="./static/images/funTit.png" alt="" />
+          </div>
+          <div class="fun_list">
+            <img class="list_dx" src="./static/images/list_dx.png" alt="" />
+            <div class="list_com list_com1">
+              <p class="list_com_p1">接入最新的大语言模型，聪明</p>
+              <p class="list_com_p2">
+                Deskmate引入了最新的大语言模型，确保桌妹始终能为您提供最聪明的AI对话服务。无需复杂的设置，一键切换先进的人工对话模型。
+              </p>
+            </div>
+            <div class="list_com list_com2">
+              <p class="list_com_p1">赋予AI独一无二的性格，有趣</p>
+              <p class="list_com_p2">
+                通过独特的AI调教方式，每一位桌妹都能够根据您的需求和偏好进行个性化定制。这意味着您将拥有一位独一无二、有趣至极的AI伙伴。
+              </p>
+            </div>
+            <div class="list_com list_com3">
+              <p class="list_com_p1">角色才艺等待你开发，多艺</p>
+              <p class="list_com_p2">
+                想要听歌、跳舞，或者享受更多才艺表演？桌妹随时为您呈现精彩的1对1表演。
+              </p>
+            </div>
+            <div class="list_com list_com4">
+              <p class="list_com_p1">不同性格角色随时切换，快乐</p>
+              <p class="list_com_p2">
+                在Deskmate的世界里，您将会发现每位AI伙伴都拥有独特的声音、技能和性格。无论您是在寻找陪伴、娱乐还是帮助，您都可以随时切换到最适合您的桌妹，享受快乐时光。相信你会找到一款你心仪的桌妹！
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="software_wrap">
+          <div class="software_p1">
+            部分功能需要付费成为会员才能使用，详情请参考
+          </div>
+          <div class="software_p2">Deskmate会员介绍</div>
+          <div class="fun_tit software_tit">
+            <img src="./static/images/softwareTit.png" alt="" />
+          </div>
+          <div class="software_swiper" id="software_swiper">
+            <div class="prev">
+              <img
+                class="com_change"
+                src="./static/images/right.png"
+                @click="arrowClick('prev')"
+              />
+            </div>
+            <div class="next">
+              <img
+                class="com_change"
+                src="./static/images/right.png"
+                @click="arrowClick('next')"
+              />
+            </div>
+            <el-carousel
+              ref="cardShow"
+              id="cardShow"
+              arrow="never"
+              :interval="5000"
+              arrow="always"
+              :height="carouselHeight"
+              indicator-position="none"
+            >
+              <el-carousel-item>
+                <img src="./static/images/swiper1.png" alt="" />
+              </el-carousel-item>
+              <el-carousel-item>
+                <img src="./static/images/swiper2.png" alt="" />
+              </el-carousel-item>
+              <el-carousel-item>
+                <img src="./static/images/swiper3.png" alt="" />
+              </el-carousel-item>
+              <el-carousel-item>
+                <img src="./static/images/swiper4.png" alt="" />
+              </el-carousel-item>
+              <el-carousel-item>
+                <img src="./static/images/swiper5.png" alt="" />
+              </el-carousel-item>
+            </el-carousel>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            scrollTop: "",
+            showDx2: false,
+            carouselHeight: "720px",
+          };
+        },
+        components: {},
+        methods: {
+          arrowClick(val) {
+            if (val === "next") {
+              this.$refs.cardShow.next();
+            } else {
+              this.$refs.cardShow.prev();
+            }
+          },
+          // 获取页面滚动距离
+          handleScroll() {
+            this.scrollTop =
+              window.pageYOffset ||
+              document.documentElement.scrollTop ||
+              document.body.scrollTop;
+            console.log(this.scrollTop);
+            if (this.scrollTop > 400) {
+              this.showDx2 = true;
+            }
+          },
+          calculateEmbeddedVideoSize() {
+            if (window.innerWidth < window.innerHeight) {
+              let embeddingVideo = document.getElementById("video_iframe");
+              let embeddingVideoWidth = window.innerWidth * 0.75;
+              let embeddingVideoHeight = (embeddingVideoWidth * 9) / 16;
+              embeddingVideo.width = Math.round(embeddingVideoWidth).toString();
+              embeddingVideo.height =
+                Math.round(embeddingVideoHeight).toString();
+              console.log(
+                "Embedding Video Width: ",
+                embeddingVideoWidth,
+                " Height:",
+                embeddingVideoHeight
+              );
+            }
+          },
+          calculateSoftwareSwiper() {
+            if (window.innerWidth < window.innerHeight) {
+              let swiper = document.getElementById("software_swiper");
+              let swiperWidth = window.innerWidth * 0.6;
+              let swiperHeight = (swiperWidth * 9) / 16;
+              swiper.style.width = swiperWidth.toString() + "px";
+              swiper.style.height = swiperHeight.toString() + "px";
+
+              let carousel = document.getElementById("cardShow");
+              let carouselWidth = carousel.offsetWidth;
+              let carouselHeight = (carouselWidth * 9) / 16;
+              this.carouselHeight = carouselHeight.toString() + "px";
+              console.log(
+                "carousel width:",
+                carouselWidth,
+                " height:",
+                this.carouselHeight
+              );
+            }
+          },
+        },
+        mounted: function () {
+          console.log(window.innerWidth, window.outerWidth);
+          window.addEventListener("scroll", this.handleScroll); // 监听页面滚动
+
+          // this.calculateEmbeddedVideoSize()
+          // this.calculateSoftwareSwiper()
+        },
+      });
+    </script>
+  </body>
 </html>
